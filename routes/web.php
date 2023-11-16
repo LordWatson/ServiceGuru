@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;

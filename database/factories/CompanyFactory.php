@@ -21,6 +21,7 @@ class CompanyFactory extends Factory
         return [
             'name' => fake()->company(),
             'registered_office' => fake()->address(),
+            'parent_company' => 1,
         ];
     }
 }

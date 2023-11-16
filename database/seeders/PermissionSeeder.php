@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyUser;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -59,6 +60,11 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role1);
 
+        CompanyUser::create([
+            'company_id' => 1,
+            'user_id' => 1,
+        ]);
+
         // create roles and assign existing permissions
         $role2 = Role::create(['name' => 'admin']);
         $role2->givePermissionTo($proposalPermission);
@@ -71,11 +77,16 @@ class PermissionSeeder extends Seeder
         ]);
         $user->assignRole($role2);
 
+        CompanyUser::create([
+            'company_id' => 1,
+            'user_id' => 2,
+        ]);
+
         /**
          * gets all permissions via Gate::before rule
          * see AuthServiceProvider
          */
-        $role3 = Role::create(['name' => 'Super-Admin']);
+        $role3 = Role::create(['name' => 'super-admin']);
 
         // create demo user
         $user = User::factory()->create([
@@ -83,5 +94,10 @@ class PermissionSeeder extends Seeder
             'email' => 'superadmin@example.com',
         ]);
         $user->assignRole($role3);
+
+        CompanyUser::create([
+            'company_id' => 1,
+            'user_id' => 3,
+        ]);
     }
 }
